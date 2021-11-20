@@ -1,4 +1,6 @@
+import 'package:first_app/models/catalogs.dart';
 import 'package:first_app/widgets/drawer.dart';
+import 'package:first_app/widgets/item_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -15,9 +17,15 @@ class HomePage extends StatelessWidget {
           style: TextStyle(color: Colors.black),
         )),
       ),
-      body: Center(
-        child: Container(
-          child: Text(message),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView.builder(
+          itemCount: CatalogModel.items.length,
+          itemBuilder: (context, index) {
+            return ItemWidget(
+              item: CatalogModel.items[index],
+            );
+          },
         ),
       ),
       drawer: HomeDrawer(),
